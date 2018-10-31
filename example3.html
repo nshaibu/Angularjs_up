@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+    <head>
+        <title>Looping over an array in angular</title>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <style type="text/css">
+            .true {
+                background-color: green
+            }
+            .false {
+                background-color: red
+            }
+        </style>
+    </head>
+    <body class="container" ng-controller="maincontroller as ctrl">
+        <table class="table table-hover">
+            <thead>
+              <th>ID</th>
+              <th>Message</th>
+              <th>Status</th>  
+            </thead>
+            <tbody>
+                <tr class="ng-cloak" ng-repeat="note in ctrl.notes">
+                    <div ng-class="node.getclass()">
+                    <td>{{note.id}}</td>
+                    <td>{{note.message}}</td>
+                    <td>{{note.status}}</td>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+        </script>
+        <script type="text/javascript">
+            angular.module("notesApp", [])
+                   .controller("maincontroller", [function(){
+                       this.notes = [
+                           {"id":1, "message":"Advanced angular", "status": false},
+                           {"id":2, "message":"Angular basics", "status": true},
+                           {"id":3, "message":"Angular", "status":false}
+                       ]
+
+                       this.getclass = function(){
+                           return this.status
+                       }
+                   }])
+        </script>
+    </body>
+</html>

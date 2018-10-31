@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+    <head>
+        <title>Example2</title>
+    </head>
+    <body ng-controller="maincontroller as ctrl">
+        <p>Defining angular controller and modules</p>
+        <input type="text" ng-model="ctrl.message" placeholder="Enter your message">
+        <button ng-click="ctrl.alert_message()">click me</button>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+        </script>
+        <script type="text/javascript">
+            angular.module("notesApp", [])
+                   .controller("maincontroller", [function(){
+                       this.message = null
+
+                       this.alert_message = function(){
+                           alert(this.message)
+                       }
+                   }]);
+        </script>
+    </body>
+</html>
